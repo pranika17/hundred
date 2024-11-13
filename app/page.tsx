@@ -1,56 +1,79 @@
 
 "use client";
-import { ArrowRight, ArrowRightIcon, BarChart,Book,Bell, BarChart2,Globe, Menu,TrendingUp,X,PieChart,Shield,Zap } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight,Book,Bell, BarChart2,Globe, Menu,TrendingUp,X,PieChart,Shield,Zap } from "lucide-react";
 import { useRef, useState } from "react";
 import {motion, useInView} from "framer-motion"
 import {useRouter} from "next/navigation";
+import { ReactNode, } from "react";
 
-const Animatedsection=({children}:any)=>{
-  
-  const ref =useRef(null)
-  const ininview=useInView(ref,{once:true,amount:0.3})
-  return(
-    <motion.section ref={ref} initial={{opacity:1,y:50}}
-    animate={ininview ? {opacity:1,y:0} : {opacity:0,y:50}}
-    transition={{duration:0.8}}>
+interface AnimatedSectionProps {
+  children: ReactNode;  // Specify the type of 'children' as ReactNode
+}
+const Animatedsection = ({ children }: AnimatedSectionProps) => {
+  const ref = useRef(null);
+  const ininview = useInView(ref, { once: true, amount: 0.3 });
+
+  return (
+    <motion.section
+      ref={ref}
+      initial={{ opacity: 1, y: 50 }}
+      animate={ininview ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8 }}
+    >
       {children}
-
-    </motion.section> 
-);
+    </motion.section>
+  );
 };
+
     
   
+interface FeatureBoxProps {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  delay: number;
+}
+const FeatureBox = ({ icon, title, description, delay }: FeatureBoxProps) => {
+  const [ishovered, setishovered] = useState(false);
 
-const FeatureBox=({icon,title,description,delay}:any)=>{
-  const [ishovered,setishovered]=useState(false)
-  return(
-     <motion.div 
-     whileHover={{scale:1.05,boxShadow:"0 10px 40px rgba(59,130,246,0.3"}} 
-     initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:0.6,delay}} 
-     onHoverStart={()=>setishovered(true)}
-     onHoverEnd={()=>setishovered(false)}
-     
-     className="bg-gray-800 p-6 rounded-xl shadow-1g flex flex-col items-center text-center h-full relative overflow-hidden">
-      <motion.div  animate={{scale:ishovered ? 1.2:1,rotate:ishovered ? 360:0}} className="text-blue-500 mb-4 relative z-10">{icon}</motion.div>
-        <h3 className="text-xl font-semibold md-2 text-white relative z-10">
-          {title}
-
-        </h3>
-        <p className="text-xl font-semibold mb-2 text-white relative z-10">
-          {description}
-
-
-        </p>
-        <motion.button whileHover={{x:5}}
-          className="mt-auto text-blue-500 flex items-center text-sm font-medium relative z-10">
-          Learn More <ArrowRight className="ml-1" size={16}/>
-
-        </motion.button>
-      <motion.div className="absolute inset-0 bg-blue-600 opacity-0" animate={{opacity:ishovered? 0.1:0 }} transition={{duration:0.3}}
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0 10px 40px rgba(59,130,246,0.3)"
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay }}
+      onHoverStart={() => setishovered(true)}
+      onHoverEnd={() => setishovered(false)}
+      className="bg-gray-800 p-6 rounded-xl shadow-lg flex flex-col items-center text-center h-full relative overflow-hidden"
+    >
+      <motion.div
+        animate={{ scale: ishovered ? 1.2 : 1, rotate: ishovered ? 360 : 0 }}
+        className="text-blue-500 mb-4 relative z-10"
+      >
+        {icon}
+      </motion.div>
+      <h3 className="text-xl font-semibold text-white relative z-10">
+        {title}
+      </h3>
+      <p className="text-xl font-semibold mb-2 text-white relative z-10">
+        {description}
+      </p>
+      <motion.button
+        whileHover={{ x: 5 }}
+        className="mt-auto text-blue-500 flex items-center text-sm font-medium relative z-10"
+      >
+        Learn More <ArrowRight className="ml-1" size={16} />
+      </motion.button>
+      <motion.div
+        className="absolute inset-0 bg-blue-600 opacity-0"
+        animate={{ opacity: ishovered ? 0.1 : 0 }}
+        transition={{ duration: 0.3 }}
       />
-     </motion.div>
-  )
+    </motion.div>
+  );
 };
 
 export default function Home() {
@@ -270,17 +293,18 @@ export default function Home() {
               </h2>
               <p className="text-xl text-gray-300">Experience  the advantage of professionaal grade trading tools and resources</p>
             </div>
-            <div className="grid md: grid-cols-3 gap-8">
-              {tradingFeatures.map((features,index)=>(
-                <FeatureBox key={index} 
-                icon={features.icon}
-                title={features.title}
-                description={features.description}
-              
-               />
-              ))}
-              
-            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+  {tradingFeatures.map((features, index) => (
+    <FeatureBox
+      key={index}
+      icon={features.icon}
+      title={features.title}
+      description={features.description}
+      delay={index * 0.2} // You can adjust the delay logic here
+    />
+  ))}
+</div>
+
           </div>
         </div>
         </Animatedsection>
