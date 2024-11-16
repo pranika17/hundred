@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -47,7 +48,7 @@ const Header = () => {
           <ul className="flex space-x-4">
             <li>
               <a
-                href="/dashboard"
+                href="/dashboaard"
                 className="text-blue-500 font-semibold flex items-center"
               >
                 <Zap className="mr-1" size={16} />
@@ -56,7 +57,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="/dashboard"
+                href="/dashboaard"
                 className="text-gray-300 hover:text-blue-500 transition-colors flex items-center"
               >
                 <BarChart2 className="mr-1" size={16} />
@@ -148,7 +149,7 @@ const Breadcrumb = ({ stock }) => (
       Home
     </a>
     <span>/</span>
-    <a href="/dashboard" className="hover:text-blue-500">
+    <a href="/dashboaard" className="hover:text-blue-500">
       Stocks
     </a>
     <span>/</span>

@@ -1,10 +1,31 @@
-"use client";
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 
+
+"use client";
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import {Search,Bell,ShoppingCart,User,TrendingUp,Plus,ChevronRight,BarChart2,PieChart,DollarSign,Activity,Menu,X,ArrowUpRight,ArrowDownRight,Zap,Globe,BookOpen,Gift,HelpCircle,Settings,
+import {
+  Search,
+  Bell,
+  ShoppingCart,
+  User,
+  TrendingUp,
+  Plus,
+  ChevronRight,
+  BarChart2,
+  PieChart,
+  DollarSign,
+  Activity,
+  Menu,
+  X,
+  ArrowUpRight,
+  ArrowDownRight,
+  Zap,
+  Globe,
+  BookOpen,
+  Gift,
+  HelpCircle,
+  Settings,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -229,7 +250,6 @@ const MarketIndices = () => {
     { name: "NIFTY50", value: 18245.32, change: 0, percentChange: 0 },
     { name: "SENSEX", value: 61002.57, change: 0, percentChange: 0 },
     { name: "BANKNIFTY", value: 43123.45, change: 0, percentChange: 0 },
-
   ]);
 
   useEffect(() => {
