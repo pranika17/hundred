@@ -509,7 +509,9 @@ const OpenInterest = () => {
   );
 };
 
-export default function GrowwNIFTY50Page({ id}) {
+export default function GrowwNIFTY50Page({ id
+  
+}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
