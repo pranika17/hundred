@@ -509,7 +509,7 @@ const OpenInterest = () => {
   );
 };
 
-export default function GrowwNIFTY50Page({ params }) {
+export default function GrowwNIFTY50Page({ id}) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -538,11 +538,11 @@ export default function GrowwNIFTY50Page({ params }) {
   }
   return (
     <div className="bg-gray-900 min-h-screen text-gray-300">
-      <Header />
+       <Header />
       <main className="container mx-auto px-4">
-        <Breadcrumb stock={params.id} />
-        <StockChart stock={params.id} />
-        <OptionsTable stock={params.id} />
+        <Breadcrumb stock={id} />
+        <StockChart stock={id} />
+        <OptionsTable stock={id} />
         <OpenInterest />
       </main>
     </div>
